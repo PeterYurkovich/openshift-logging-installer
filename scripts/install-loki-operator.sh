@@ -12,9 +12,9 @@ then
     exit 1
 fi
 
-if [ -z "$REGISTRY_BASE" ]
+if [ -z "$REGISTRY_ORG" ]
 then
-    echo "REGISTRY_BASE is not defined"
+    echo "REGISTRY_ORG is not defined"
     exit 1
 fi
 
@@ -27,5 +27,5 @@ oc label ns/openshift-logging openshift.io/cluster-monitoring=true --overwrite
 
 echo "Installing Loki Operator"
 cd "${LOKI_PATH}/operator"
-make olm-deploy REGISTRY_BASE=$REGISTRY_BASE VARIANT=openshift
+make olm-deploy REGISTRY_ORG=$REGISTRY_ORG VARIANT=openshift
 
